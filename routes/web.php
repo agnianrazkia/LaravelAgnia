@@ -14,11 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 Route::prefix('admin')->group(function(){
 	Route::get('/',function(){
 		return view('admin.pages.dashboard');
 	})->name('admin.home');
 });
+=======
+Route::group(['middleware'=>['auth']], function(){
+	Route::prefix('admin')->group(function(){
+	Route::get('/', function(){
+		return view('admin.pages.dashboard');
+	})->name('admin.home');
+});
+});
+
+>>>>>>> Eps 4
 
 Auth::routes();
 
