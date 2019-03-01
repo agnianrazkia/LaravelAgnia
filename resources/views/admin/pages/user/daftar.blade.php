@@ -37,7 +37,7 @@
 
 <table class="table table-striped mb-3">
 	<tr>
-		<th>Name</th><th>Email</th><th>Akses</th><th>&nbsp;</th>
+		<th>Name</th><th>Email </th><th>Akses</th><th>&nbsp;</th>
 	</tr>
 	@foreach($data as $dt)
 	<tr>
