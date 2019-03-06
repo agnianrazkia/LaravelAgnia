@@ -4,6 +4,15 @@
 <h1>Kategori <small class="text-muted">Tambah</small></h1>
 <hr>
 
+@if( session('result') == 'fail' )
+<div class="alert alert-danger alert-dismissible fade show">
+	<strong>Failed !</strong> Gagal disimpan.
+	<button type="button" class="close" data-dismiss="alert">
+		&times;
+	</button>
+</div>
+@endif
+
 <div class="row">
 	<div class="col-md-6 mb-3">
 		<form method="POST" action="{{ route('admin.kategori.add') }}">
@@ -17,10 +26,13 @@
 				<div class="card-body">
 					<div class="form-group form-label-group">
 						<input type="text" name="kategori"
-						class="form-control"
+						class="form-control {{ $errors->has('kategori')?'is-invalid':'' }}"
 						value="{{ old('kategori') }}"
 						id="iKategori" placeholder="Kategori" required>
 						<label for="iKategori">Kategori</label>
+						@if( $errors->has('kategori') )
+						<div class="invalid-feedback">{{ $errors->first('kategori') }}</div>
+						@endif
 					</div><!--End Form Group-->
 					
 				</div><!--End Card Body-->
