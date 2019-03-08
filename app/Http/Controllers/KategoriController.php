@@ -24,6 +24,7 @@ class KategoriController extends Controller
         \Validator::make($req->all(),[
             'kategori'=>'required|between:3,100|unique:kategori,nama_kategori',
         ])->validate();
+
     $result = new Kategori;
     $result->nama_kategori = $req->kategori;
 
@@ -43,6 +44,12 @@ class KategoriController extends Controller
 
     public function update(Request $req)
     {
-        return 'Fungsi Update';
+        \Validator::make($req->all(),[
+            'kategori'=>'required|between:3,100|unique:kategori,nama_kategori,'.$req->id,
+        ])->validate();
+
+        
+        }
     }
 }
+
